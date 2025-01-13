@@ -1,5 +1,6 @@
 from queue import Queue
 import random
+import time
 
 # Class for application 
 class Application:
@@ -20,6 +21,7 @@ class Centre:
         while not self.applications.empty():
             current_application: Application = self.applications.get()
             print(f"Serve aplication {current_application.id}")
+            time.sleep(1)
         else:
             print("All applications were served, the queue is empty")
     
@@ -30,7 +32,7 @@ if __name__ == '__main__':
 
     while True:
 
-        user_input = input("If you wanna create new application press 'Enter'")
+        user_input = input("If you wanna update and process new application press 'Enter'\nIf you wanna close the program write 'Exit'     >>>>>>>>>>     ")
 
         if not user_input:
             # Create new applications
@@ -39,3 +41,8 @@ if __name__ == '__main__':
             
             # Process current applications
             centre.process_request()
+        elif user_input.lower().strip() == 'exit':
+            print("Bye, see you!")
+            break
+        else:
+            print("This command is not exist, please try again!")
